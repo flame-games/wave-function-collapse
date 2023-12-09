@@ -7,7 +7,7 @@ import './components/cell.dart';
 import './components/tile.dart';
 import 'dart:math';
 
-const int DIM = 20;
+const int DIM = 10;
 
 class MainGame extends FlameGame with KeyboardEvents {
   List<Cell> grid = [];
@@ -18,26 +18,32 @@ class MainGame extends FlameGame with KeyboardEvents {
   Future<void> onLoad() async {
     super.onLoad();
 
-    tiles.add(await Tile.load('circuit/0.png', ["AAA", "AAA", "AAA", "AAA"]));
-    tiles.add(await Tile.load('circuit/1.png', ["BBB", "BBB", "BBB", "BBB"]));
-    tiles.add(await Tile.load('circuit/2.png', ["BBB", "BCB", "BBB", "BBB"]));
-    tiles.add(await Tile.load('circuit/3.png', ["BBB", "BDB", "BBB", "BDB"]));
-    tiles.add(await Tile.load('circuit/4.png', ["ABB", "BCB", "BBA", "AAA"]));
-    tiles.add(await Tile.load('circuit/5.png', ["ABB", "BBB", "BBB", "BBA"]));
-    tiles.add(await Tile.load('circuit/6.png', ["BBB", "BCB", "BBB", "BCB"]));
-    tiles.add(await Tile.load('circuit/7.png', ["BDB", "BCB", "BDB", "BCB"]));
-    tiles.add(await Tile.load('circuit/8.png', ["BDB", "BBB", "BCB", "BBB"]));
-    tiles.add(await Tile.load('circuit/9.png', ["BCB", "BCB", "BBB", "BCB"]));
-    tiles.add(await Tile.load('circuit/10.png', ["BCB", "BCB", "BCB", "BCB"]));
-    tiles.add(await Tile.load('circuit/11.png', ["BCB", "BCB", "BBB", "BBB"]));
-    tiles.add(await Tile.load('circuit/12.png', ["BBB", "BCB", "BBB", "BCB"]));
+    tiles.add(await Tile.load('tiles/blank.png', ["AAA", "AAA", "AAA", "AAA"]));
+    tiles.add(await Tile.load('tiles/right.png', ["ABA", "ABA", "ABA", "AAA"]));
+    tiles.add(await Tile.load('tiles/down.png', ["AAA", "ABA", "ABA", "ABA"]));
+    tiles.add(await Tile.load('tiles/left.png', ["ABA", "AAA", "ABA", "ABA"]));
+    tiles.add(await Tile.load('tiles/up.png', ["ABA", "ABA", "AAA", "ABA"]));
+
+    // tiles.add(await Tile.load('circuit/0.png', ["AAA", "AAA", "AAA", "AAA"]));
+    // tiles.add(await Tile.load('circuit/1.png', ["BBB", "BBB", "BBB", "BBB"]));
+    // tiles.add(await Tile.load('circuit/2.png', ["BBB", "BCB", "BBB", "BBB"]));
+    // tiles.add(await Tile.load('circuit/3.png', ["BBB", "BDB", "BBB", "BDB"]));
+    // tiles.add(await Tile.load('circuit/4.png', ["ABB", "BCB", "BBA", "AAA"]));
+    // tiles.add(await Tile.load('circuit/5.png', ["ABB", "BBB", "BBB", "BBA"]));
+    // tiles.add(await Tile.load('circuit/6.png', ["BBB", "BCB", "BBB", "BCB"]));
+    // tiles.add(await Tile.load('circuit/7.png', ["BDB", "BCB", "BDB", "BCB"]));
+    // tiles.add(await Tile.load('circuit/8.png', ["BDB", "BBB", "BCB", "BBB"]));
+    // tiles.add(await Tile.load('circuit/9.png', ["BCB", "BCB", "BBB", "BCB"]));
+    // tiles.add(await Tile.load('circuit/10.png', ["BCB", "BCB", "BCB", "BCB"]));
+    // tiles.add(await Tile.load('circuit/11.png', ["BCB", "BCB", "BBB", "BBB"]));
+    // tiles.add(await Tile.load('circuit/12.png', ["BBB", "BCB", "BBB", "BCB"]));
 
     // タイルの回転バージョンを生成
-    for (int i = 2; i < 14; i++) {
-      for (int j = 1; j < 4; j++) {
-        tiles.add(tiles[i].rotate(j));
-      }
-    }
+    // for (int i = 2; i < 14; i++) {
+    //   for (int j = 1; j < 4; j++) {
+    //     tiles.add(tiles[i].rotate(j));
+    //   }
+    // }
 
     // for (int i = 2; i < 11; i++) {
     //   for (int j = 1; j < 4; j++) {
@@ -119,8 +125,10 @@ class MainGame extends FlameGame with KeyboardEvents {
     }
 
     if (stopIndex > 0) {
+      print("stopIndex > 0");
       gridCopy.removeRange(stopIndex, gridCopy.length);
     }
+
     // リストからランダムな要素を選択
     Cell cell = gridCopy[random.nextInt(gridCopy.length)];
     cell.collapsed = true;
@@ -138,6 +146,7 @@ class MainGame extends FlameGame with KeyboardEvents {
     for (int j = 0; j < DIM; j++) {
       for (int i = 0; i < DIM; i++) {
         int index = i + j * DIM;
+
         if (grid[index].collapsed) {
           nextGrid[index] = grid[index];
         } else {
@@ -187,5 +196,7 @@ class MainGame extends FlameGame with KeyboardEvents {
         }
       }
     }
+
+    grid = nextGrid.where((cell) => cell != null).cast<Cell>().toList();
   }
 }

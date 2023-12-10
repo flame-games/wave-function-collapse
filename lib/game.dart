@@ -23,7 +23,7 @@ class MainGame extends FlameGame with KeyboardEvents {
     for (int i = 0; i < tileListData['tileList'].length; i++) {
       var tileData = tileListData['tileList'][i];
       tiles.add(await Tile.load(
-          tileData['src'], List<String>.from(tileData['socket'])));
+          tileData['src'], List<String>.from(tileData['sockets'])));
     }
 
     // タイルの回転バージョンを生成

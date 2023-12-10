@@ -51,7 +51,7 @@ class Tile {
 
   Tile rotate(int num) {
     // 回転角度をラジアンで計算（num回90度回転）
-    double rotation = num * (math.pi / 2); // 90度 = π/2 ラジアン
+    double rotation = num * (math.pi / 2);
 
     // 新しいSpriteComponentを作成して回転を適用
     SpriteComponent newImg = SpriteComponent(

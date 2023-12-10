@@ -57,7 +57,7 @@ class Tile {
     // 新しいSpriteComponentを作成して回転を適用
     SpriteComponent newImg = SpriteComponent(
       sprite: img.sprite,
-      // angle: rotation,
+      angle: rotation,
       anchor: Anchor.center,
     );
 
@@ -67,5 +67,14 @@ class Tile {
     });
 
     return Tile(newImg, newEdges, rotation);
+  }
+
+  void createSpriteComponent(Vector2 size, double angle) {
+    img = SpriteComponent(
+      sprite: img.sprite,
+      size: size,
+      anchor: Anchor.center,
+    );
+    img.angle = angle;
   }
 }

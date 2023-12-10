@@ -6,46 +6,28 @@ import 'package:flutter/material.dart';
 import './components/cell.dart';
 import './components/tile.dart';
 import 'dart:math';
+import 'dart:convert';
 
-const int DIM = 10;
+const int DIM = 20;
+const jsonFileName = "tile_data.json";
 
 class MainGame extends FlameGame with KeyboardEvents {
   List<Cell> grid = [];
   List<Tile> tiles = [];
-  List<Tile> tileImages = [];
 
   @override
   Future<void> onLoad() async {
     super.onLoad();
 
-    tiles.add(await Tile.load('tiles/blank.png', ["AAA", "AAA", "AAA", "AAA"]));
-    tiles.add(await Tile.load('tiles/right.png', ["ABA", "ABA", "ABA", "AAA"]));
-    tiles.add(await Tile.load('tiles/down.png', ["AAA", "ABA", "ABA", "ABA"]));
-    tiles.add(await Tile.load('tiles/left.png', ["ABA", "AAA", "ABA", "ABA"]));
-    tiles.add(await Tile.load('tiles/up.png', ["ABA", "ABA", "AAA", "ABA"]));
-
-    // tiles.add(await Tile.load('circuit/0.png', ["AAA", "AAA", "AAA", "AAA"]));
-    // tiles.add(await Tile.load('circuit/1.png', ["BBB", "BBB", "BBB", "BBB"]));
-    // tiles.add(await Tile.load('circuit/2.png', ["BBB", "BCB", "BBB", "BBB"]));
-    // tiles.add(await Tile.load('circuit/3.png', ["BBB", "BDB", "BBB", "BDB"]));
-    // tiles.add(await Tile.load('circuit/4.png', ["ABB", "BCB", "BBA", "AAA"]));
-    // tiles.add(await Tile.load('circuit/5.png', ["ABB", "BBB", "BBB", "BBA"]));
-    // tiles.add(await Tile.load('circuit/6.png', ["BBB", "BCB", "BBB", "BCB"]));
-    // tiles.add(await Tile.load('circuit/7.png', ["BDB", "BCB", "BDB", "BCB"]));
-    // tiles.add(await Tile.load('circuit/8.png', ["BDB", "BBB", "BCB", "BBB"]));
-    // tiles.add(await Tile.load('circuit/9.png', ["BCB", "BCB", "BBB", "BCB"]));
-    // tiles.add(await Tile.load('circuit/10.png', ["BCB", "BCB", "BCB", "BCB"]));
-    // tiles.add(await Tile.load('circuit/11.png', ["BCB", "BCB", "BBB", "BBB"]));
-    // tiles.add(await Tile.load('circuit/12.png', ["BBB", "BCB", "BBB", "BCB"]));
+    var tileListData = await loadJsonData(jsonFileName);
+    for (int i = 0; i < tileListData['tileList'].length; i++) {
+      var tileData = tileListData['tileList'][i];
+      tiles.add(await Tile.load(
+          tileData['src'], List<String>.from(tileData['socket'])));
+    }
 
     // タイルの回転バージョンを生成
     // for (int i = 2; i < 14; i++) {
-    //   for (int j = 1; j < 4; j++) {
-    //     tiles.add(tiles[i].rotate(j));
-    //   }
-    // }
-
-    // for (int i = 2; i < 11; i++) {
     //   for (int j = 1; j < 4; j++) {
     //     tiles.add(tiles[i].rotate(j));
     //   }
@@ -56,7 +38,12 @@ class MainGame extends FlameGame with KeyboardEvents {
       tile.analyze(tiles);
     }
 
-    grid = List.generate(DIM * DIM, (index) => Cell.fromValue(tiles.length));
+    startOver();
+  }
+
+  Future<dynamic> loadJsonData(String fileName) async {
+    String jsonString = await rootBundle.loadString('assets/data/$fileName');
+    return jsonDecode(jsonString);
   }
 
   void checkValid(List<int> arr, List<int> valid) {
@@ -69,8 +56,7 @@ class MainGame extends FlameGame with KeyboardEvents {
   }
 
   void startOver() {
-    // 初期化ロジック
-    print("startOver");
+    grid = List.generate(DIM * DIM, (index) => Cell.fromValue(tiles.length));
   }
 
   @override
@@ -107,7 +93,6 @@ class MainGame extends FlameGame with KeyboardEvents {
 
     // Pick cell with least entropy
     List<Cell> gridCopy = List<Cell>.from(grid);
-    // List<Cell> gridCopy = grid.map((cell) => Cell.clone(cell)).toList();
     gridCopy = gridCopy.where((a) => !a.collapsed).toList();
 
     if (gridCopy.isEmpty) {
@@ -125,7 +110,6 @@ class MainGame extends FlameGame with KeyboardEvents {
     }
 
     if (stopIndex > 0) {
-      print("stopIndex > 0");
       gridCopy.removeRange(stopIndex, gridCopy.length);
     }
 

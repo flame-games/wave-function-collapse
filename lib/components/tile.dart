@@ -8,10 +8,6 @@ String reverseString(String s) {
 }
 
 bool compareEdge(String a, String b) {
-  // print("compareEdge");
-  // print("a: $a, b : $b = ${a == reverseString(b)}");
-
-  // return a == b;
   return a == reverseString(b);
 }
 

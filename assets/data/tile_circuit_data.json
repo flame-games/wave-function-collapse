@@ -1,0 +1,55 @@
+{
+  "tileList": [
+    {
+      "src": "circuit/0.png",
+      "socket": ["AAA", "AAA", "AAA", "AAA"]
+    },
+    {
+      "src": "circuit/1.png",
+      "socket": ["BBB", "BBB", "BBB", "BBB"]
+    },
+    {
+      "src": "circuit/2.png",
+      "socket": ["BBB", "BCB", "BBB", "BBB"]
+    },
+    {
+      "src": "circuit/3.png",
+      "socket": ["BBB", "BDB", "BBB", "BDB"]
+    },
+    {
+      "src": "circuit/4.png",
+      "socket": ["ABB", "BCB", "BBA", "AAA"]
+    },
+    {
+      "src": "circuit/5.png",
+      "socket": ["ABB", "BBB", "BBB", "BBA"]
+    },
+    {
+      "src": "circuit/6.png",
+      "socket": ["BBB", "BCB", "BBB", "BCB"]
+    },
+    {
+      "src": "circuit/7.png",
+      "socket": ["BDB", "BCB", "BDB", "BCB"]
+    },
+    {
+      "src": "circuit/8.png",
+      "socket": ["BDB", "BBB", "BCB", "BBB"]
+    },
+    {
+      "src": "circuit/9.png",
+      "socket": ["BCB", "BCB", "BBB", "BCB"]
+    },
+    {
+      "src": "circuit/10.png",
+      "socket": ["BCB", "BCB", "BCB", "BCB"]
+    },
+    {
+      "src": "circuit/11.png",
+      "socket": ["BCB", "BCB", "BBB", "BBB"]
+    },
+    {
+      "src": "circuit/12.png",
+      "socket": ["BBB", "BCB", "BBB", "BCB"]
+    }]
+}

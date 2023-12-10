@@ -12,6 +12,7 @@ bool compareEdge(String a, String b) {
 }
 
 class Tile {
+  double angle = 0.0;
   SpriteComponent img;
   List<String> edges;
   List<int> up = [];
@@ -19,12 +20,12 @@ class Tile {
   List<int> down = [];
   List<int> left = [];
 
-  Tile(this.img, this.edges);
+  Tile(this.img, this.edges, this.angle);
 
   static Future<Tile> load(String imagePath, List<String> edges) async {
     Image image = await Flame.images.load(imagePath);
     SpriteComponent spriteComponent = SpriteComponent.fromImage(image);
-    return Tile(spriteComponent, edges);
+    return Tile(spriteComponent, edges, 0.0);
   }
 
   void analyze(List<Tile> tiles) {
@@ -56,7 +57,7 @@ class Tile {
     // 新しいSpriteComponentを作成して回転を適用
     SpriteComponent newImg = SpriteComponent(
       sprite: img.sprite,
-      angle: rotation,
+      // angle: rotation,
       anchor: Anchor.center,
     );
 
@@ -65,6 +66,6 @@ class Tile {
       return edges[(i - num + edges.length) % edges.length];
     });
 
-    return Tile(newImg, newEdges);
+    return Tile(newImg, newEdges, rotation);
   }
 }

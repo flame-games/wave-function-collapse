@@ -9,11 +9,19 @@ import 'dart:math';
 import 'dart:convert';
 
 const int DIM = 20;
-const jsonFileName = "tile_data.json";
+const jsonFileName = "tile_circuit_data.json";
 
 class MainGame extends FlameGame with KeyboardEvents {
+  static final int gameWidth = 600;
+  static final int gameHeight = 600;
+
   List<Cell> grid = [];
   List<Tile> tiles = [];
+
+  @override
+  void onGameResize(Vector2 canvasSize) {
+    super.onGameResize(Vector2(gameWidth.toDouble(), gameHeight.toDouble()));
+  }
 
   @override
   Future<void> onLoad() async {
@@ -26,12 +34,23 @@ class MainGame extends FlameGame with KeyboardEvents {
           tileData['src'], List<String>.from(tileData['sockets'])));
     }
 
-    // タイルの回転バージョンを生成
-    // for (int i = 2; i < 14; i++) {
-    //   for (int j = 1; j < 4; j++) {
-    //     tiles.add(tiles[i].rotate(j));
+    // var tilesLength = tiles.length;
+    // for (int i = 0; i < tilesLength; i++) {
+    //   if (tiles[i].isRotate) {
+    //     for (int j = 1; j < 4; j++) {
+    //       tiles.add(tiles[i].rotate(j));
+    //     }
     //   }
     // }
+
+    // タイルの回転バージョンを生成
+    // todo: i = 2の画像のみ（rotate最初の画像のみ）回転がおかしい
+    for (int i = 2; i < 14; i++) {
+      for (int j = 1; j < 4; j++) {
+        var newTile = tiles[i].rotate(j);
+        tiles.add(newTile);
+      }
+    }
 
     // 隣接規則の生成
     for (var tile in tiles) {
@@ -59,6 +78,8 @@ class MainGame extends FlameGame with KeyboardEvents {
     grid = List.generate(DIM * DIM, (index) => Cell.fromValue(tiles.length));
   }
 
+  Future<void> draw() async {}
+
   @override
   void render(Canvas canvas) {
     Random random = Random();
@@ -71,19 +92,30 @@ class MainGame extends FlameGame with KeyboardEvents {
         Cell cell = grid[i + j * DIM];
         if (cell.collapsed) {
           int index = cell.sockets[0];
-          // int index = 3;
           Tile tile = tiles[index];
-
           // SpriteComponentの位置とサイズを設定
-          // tile.img.position = Vector2(i * w, j * h);
           tile.img.size = Vector2(w, h);
-          // キャンバスの描画位置を調整
+
           canvas.save();
-          canvas.translate(i * w, j * h);
+          double dx = i * w + w / 2;
+          double dy = j * h + h / 2;
+          // タイルの中心にキャンバスの原点を移動
+          canvas.translate(dx, dy);
+          // タイルを回転
+          canvas.rotate(tile.angle);
+          // キャンバスの原点を画像の左上隅に戻す
+          canvas.translate(-tile.img.size.x / 2, -tile.img.size.y / 2);
           // SpriteComponentを描画（原点に対する相対位置で描画）
           tile.img.render(canvas);
           // キャンバスの状態を元に戻す
           canvas.restore();
+
+          // addのパターン
+          // バグる。drawに記述したほうが良い
+          // tile.img.position = Vector2(i * w, j * h);
+          // tile.img.size = Vector2(w, h);
+          //
+          // add(tile.img);
         } else {
           Rect rect = Rect.fromLTWH(i * w, j * h, w, h);
           canvas.drawRect(rect, Paint()..color = Colors.white);

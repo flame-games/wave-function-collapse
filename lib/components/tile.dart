@@ -51,30 +51,34 @@ class Tile {
   }
 
   Tile rotate(int num) {
-    // 回転角度をラジアンで計算（num回90度回転）
     double rotation = num * (math.pi / 2);
-
-    // 新しいSpriteComponentを作成して回転を適用
-    SpriteComponent newImg = SpriteComponent(
-      sprite: img.sprite,
-      angle: rotation,
-      anchor: Anchor.center,
-    );
 
     // エッジを回転させる
     final newEdges = List<String>.generate(edges.length, (i) {
       return edges[(i - num + edges.length) % edges.length];
     });
 
-    return Tile(newImg, newEdges, rotation);
+    return Tile(
+        SpriteComponent(
+          sprite: img.sprite,
+        ),
+        newEdges,
+        rotation);
   }
 
-  void createSpriteComponent(Vector2 size, double angle) {
-    img = SpriteComponent(
+  SpriteComponent createSpriteComponent(Vector2 size, Vector2 position) {
+    return SpriteComponent(
       sprite: img.sprite,
       size: size,
+      position: position,
       anchor: Anchor.center,
+      angle: angle,
     );
-    img.angle = angle;
+
+    // img.size = size;
+    // img.position = position;
+    // img.angle = img.angle;
+    //
+    // return img;
   }
 }

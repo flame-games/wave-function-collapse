@@ -1,8 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/material.dart';
 import './components/cell.dart';
 import './components/tile.dart';
 import 'dart:math';
@@ -27,32 +25,9 @@ class MainGame extends FlameGame with KeyboardEvents {
   Future<void> onLoad() async {
     super.onLoad();
 
-    var tileListData = await loadJsonData(jsonFileName);
-    for (int i = 0; i < tileListData['tileList'].length; i++) {
-      var tileData = tileListData['tileList'][i];
-      tiles.add(await Tile.load(
-          tileData['src'], List<String>.from(tileData['sockets'])));
-    }
-
-    // var tilesLength = tiles.length;
-    // for (int i = 0; i < tilesLength; i++) {
-    //   if (tiles[i].isRotate) {
-    //     for (int j = 1; j < 4; j++) {
-    //       tiles.add(tiles[i].rotate(j));
-    //     }
-    //   }
-    // }
-
-    // タイルの回転バージョンを生成
-    // todo: i = 2の画像のみ（rotate最初の画像のみ）回転がおかしい
-    for (int i = 1; i < 14; i++) {
-      for (int j = 1; j < 4; j++) {
-        var newTile = tiles[i].rotate(j);
-        tiles.add(newTile);
-      }
-    }
-
-    // 隣接規則の生成
+    await initTiles();
+    initRotateTiles(tiles.length);
+    // Generating Adjacency Rules
     for (var tile in tiles) {
       tile.analyze(tiles);
     }
@@ -63,6 +38,25 @@ class MainGame extends FlameGame with KeyboardEvents {
   Future<dynamic> loadJsonData(String fileName) async {
     String jsonString = await rootBundle.loadString('assets/data/$fileName');
     return jsonDecode(jsonString);
+  }
+
+  Future<void> initTiles() async {
+    var tileListData = await loadJsonData(jsonFileName);
+    for (int i = 0; i < tileListData['tileList'].length; i++) {
+      var tileData = tileListData['tileList'][i];
+      tiles.add(await Tile.load(tileData['src'],
+          List<String>.from(tileData['sockets']), tileData['isRotate']));
+    }
+  }
+
+  void initRotateTiles(int tileLength) {
+    for (int i = 0; i < tileLength; i++) {
+      if (tiles[i].isRotate) {
+        for (int j = 1; j < 4; j++) {
+          tiles.add(tiles[i].rotate(j));
+        }
+      }
+    }
   }
 
   void checkValid(List<int> arr, List<int> valid) {

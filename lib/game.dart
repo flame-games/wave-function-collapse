@@ -8,11 +8,10 @@ import 'dart:convert';
 
 const int DIM = 20;
 const jsonFileName = "tile_circuit_data.json";
+const int gameWidth = 600;
+const int gameHeight = 600;
 
 class MainGame extends FlameGame with KeyboardEvents {
-  static final int gameWidth = 600;
-  static final int gameHeight = 600;
-
   List<Cell> grid = [];
   List<Tile> tiles = [];
 

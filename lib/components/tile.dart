@@ -14,18 +14,20 @@ bool compareEdge(String a, String b) {
 class Tile {
   double angle = 0.0;
   SpriteComponent img;
+  bool isRotate = false;
   List<String> edges;
   List<int> up = [];
   List<int> right = [];
   List<int> down = [];
   List<int> left = [];
 
-  Tile(this.img, this.edges, this.angle);
+  Tile(this.img, this.edges, this.angle, this.isRotate);
 
-  static Future<Tile> load(String imagePath, List<String> edges) async {
+  static Future<Tile> load(
+      String imagePath, List<String> edges, bool isRotate) async {
     Image image = await Flame.images.load(imagePath);
     SpriteComponent spriteComponent = SpriteComponent.fromImage(image);
-    return Tile(spriteComponent, edges, 0.0);
+    return Tile(spriteComponent, edges, 0.0, isRotate);
   }
 
   void analyze(List<Tile> tiles) {
@@ -50,22 +52,43 @@ class Tile {
     }
   }
 
+  List<int> valid(String direction) {
+    switch (direction) {
+      case 'up':
+        return up;
+      case 'right':
+        return right;
+      case 'down':
+        return down;
+      case 'left':
+        return left;
+      default:
+        return [];
+    }
+  }
+
   Tile rotate(int num) {
-    // 回転角度をラジアンで計算（num回90度回転）
     double rotation = num * (math.pi / 2);
-
-    // 新しいSpriteComponentを作成して回転を適用
-    SpriteComponent newImg = SpriteComponent(
-      sprite: img.sprite,
-      // angle: rotation,
-      anchor: Anchor.center,
-    );
-
-    // エッジを回転させる
+    // Rotating edges
     final newEdges = List<String>.generate(edges.length, (i) {
       return edges[(i - num + edges.length) % edges.length];
     });
+    return Tile(
+        SpriteComponent(
+          sprite: img.sprite,
+        ),
+        newEdges,
+        rotation,
+        false);
+  }
 
-    return Tile(newImg, newEdges, rotation);
+  SpriteComponent createSpriteComponent(Vector2 size, Vector2 position) {
+    return SpriteComponent(
+      sprite: img.sprite,
+      size: size,
+      position: position,
+      anchor: Anchor.center,
+      angle: angle,
+    );
   }
 }

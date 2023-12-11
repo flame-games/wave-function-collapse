@@ -96,21 +96,20 @@ class MainGame extends FlameGame with KeyboardEvents {
   @override
   void update(double dt) {
     super.update(dt);
-
     draw();
+    mainLoop();
+  }
 
+  void mainLoop() {
     List<Cell> lowEntropyGrid = pickCellWithLeastEntropy();
     if (lowEntropyGrid.isEmpty) {
       return;
     }
-
-    Cell cell = randomSelectionOfSockets(lowEntropyGrid);
-    if (cell.sockets.isEmpty) {
+    if (!randomSelectionOfSockets(lowEntropyGrid)) {
       startOver();
       return;
     }
-
-    mainCollapseLoop();
+    waveCollapse();
   }
 
   List<Cell> pickCellWithLeastEntropy() {
@@ -138,22 +137,22 @@ class MainGame extends FlameGame with KeyboardEvents {
     return gridCopy;
   }
 
-  Cell randomSelectionOfSockets(List<Cell> gridTarget) {
+  bool randomSelectionOfSockets(List<Cell> gridTarget) {
     Random random = Random();
 
     Cell cell = gridTarget[random.nextInt(gridTarget.length)];
     cell.collapsed = true;
 
     if (cell.sockets.isEmpty) {
-      return cell;
+      return false;
     }
 
     var pick = cell.sockets[random.nextInt(cell.sockets.length)];
     cell.sockets = [pick];
-    return cell;
+    return true;
   }
 
-  void mainCollapseLoop() {
+  void waveCollapse() {
     List<Cell?> nextGrid = List.filled(DIM * DIM, null);
     for (int j = 0; j < DIM; j++) {
       for (int i = 0; i < DIM; i++) {

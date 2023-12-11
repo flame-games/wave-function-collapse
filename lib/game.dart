@@ -44,7 +44,7 @@ class MainGame extends FlameGame with KeyboardEvents {
     for (int i = 0; i < tileListData['tileList'].length; i++) {
       var tileData = tileListData['tileList'][i];
       tiles.add(await Tile.load(tileData['src'],
-          List<String>.from(tileData['sockets']), tileData['isRotate']));
+          List<String>.from(tileData['edges']), tileData['isRotate']));
     }
   }
 
@@ -154,6 +154,7 @@ class MainGame extends FlameGame with KeyboardEvents {
 
   void waveCollapse() {
     List<Cell?> nextGrid = List.filled(DIM * DIM, null);
+
     for (int j = 0; j < DIM; j++) {
       for (int i = 0; i < DIM; i++) {
         int index = i + j * DIM;
@@ -161,49 +162,48 @@ class MainGame extends FlameGame with KeyboardEvents {
         if (grid[index].collapsed) {
           nextGrid[index] = grid[index];
         } else {
-          List<int> options = List.generate(tiles.length, (i) => i);
+          List<int> sockets = List.generate(tiles.length, (i) => i);
           // Look up
           if (j > 0) {
             Cell up = grid[i + (j - 1) * DIM];
-            List<int> validOptions = [];
-            for (int option in up.sockets) {
-              List<int> valid = tiles[option].down;
-              validOptions.addAll(valid);
+            List<int> validSockets = [];
+            for (int socket in up.sockets) {
+              List<int> valid = tiles[socket].down;
+              validSockets.addAll(valid);
             }
-            checkValid(options, validOptions);
+            checkValid(sockets, validSockets);
           }
           // Look right
           if (i < DIM - 1) {
             Cell right = grid[i + 1 + j * DIM];
-            List<int> validOptions = [];
-            for (int option in right.sockets) {
-              List<int> valid = tiles[option].left;
-              validOptions.addAll(valid);
+            List<int> validSockets = [];
+            for (int socket in right.sockets) {
+              List<int> valid = tiles[socket].left;
+              validSockets.addAll(valid);
             }
-            checkValid(options, validOptions);
+            checkValid(sockets, validSockets);
           }
           // Look down
           if (j < DIM - 1) {
             Cell down = grid[i + (j + 1) * DIM];
-            List<int> validOptions = [];
-            for (int option in down.sockets) {
-              List<int> valid = tiles[option].up;
-              validOptions.addAll(valid);
+            List<int> validSockets = [];
+            for (int socket in down.sockets) {
+              List<int> valid = tiles[socket].up;
+              validSockets.addAll(valid);
             }
-            checkValid(options, validOptions);
+            checkValid(sockets, validSockets);
           }
           // Look left
           if (i > 0) {
             Cell left = grid[i - 1 + j * DIM];
-            List<int> validOptions = [];
-            for (int option in left.sockets) {
-              List<int> valid = tiles[option].right;
-              validOptions.addAll(valid);
+            List<int> validSockets = [];
+            for (int socket in left.sockets) {
+              List<int> valid = tiles[socket].right;
+              validSockets.addAll(valid);
             }
-            checkValid(options, validOptions);
+            checkValid(sockets, validSockets);
           }
-
-          nextGrid[index] = Cell.fromList(options);
+          nextGrid[index] = Cell.fromList(sockets);
         }
       }
     }

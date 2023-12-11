@@ -77,11 +77,5 @@ class Tile {
       anchor: Anchor.center,
       angle: angle,
     );
-
-    // img.size = size;
-    // img.position = position;
-    // img.angle = img.angle;
-    //
-    // return img;
   }
 }

@@ -2,67 +2,67 @@
   "tileList": [
     {
       "src": "circuit/0.png",
-      "sockets": ["AAA", "AAA", "AAA", "AAA"],
+      "edges": ["AAA", "AAA", "AAA", "AAA"],
       "isRotate": false
     },
     {
       "src": "circuit/1.png",
-      "sockets": ["BBB", "BBB", "BBB", "BBB"],
+      "edges": ["BBB", "BBB", "BBB", "BBB"],
       "isRotate": false
     },
     {
       "src": "circuit/2.png",
-      "sockets": ["BBB", "BCB", "BBB", "BBB"],
+      "edges": ["BBB", "BCB", "BBB", "BBB"],
       "isRotate": true
     },
     {
       "src": "circuit/3.png",
-      "sockets": ["BBB", "BDB", "BBB", "BDB"],
+      "edges": ["BBB", "BDB", "BBB", "BDB"],
       "isRotate": true
     },
     {
       "src": "circuit/4.png",
-      "sockets": ["ABB", "BCB", "BBA", "AAA"],
+      "edges": ["ABB", "BCB", "BBA", "AAA"],
       "isRotate": true
     },
     {
       "src": "circuit/5.png",
-      "sockets": ["ABB", "BBB", "BBB", "BBA"],
+      "edges": ["ABB", "BBB", "BBB", "BBA"],
       "isRotate": true
     },
     {
       "src": "circuit/6.png",
-      "sockets": ["BBB", "BCB", "BBB", "BCB"],
+      "edges": ["BBB", "BCB", "BBB", "BCB"],
       "isRotate": true
     },
     {
       "src": "circuit/7.png",
-      "sockets": ["BDB", "BCB", "BDB", "BCB"],
+      "edges": ["BDB", "BCB", "BDB", "BCB"],
       "isRotate": true
     },
     {
       "src": "circuit/8.png",
-      "sockets": ["BDB", "BBB", "BCB", "BBB"],
+      "edges": ["BDB", "BBB", "BCB", "BBB"],
       "isRotate": true
     },
     {
       "src": "circuit/9.png",
-      "sockets": ["BCB", "BCB", "BBB", "BCB"],
+      "edges": ["BCB", "BCB", "BBB", "BCB"],
       "isRotate": true
     },
     {
       "src": "circuit/10.png",
-      "sockets": ["BCB", "BCB", "BCB", "BCB"],
+      "edges": ["BCB", "BCB", "BCB", "BCB"],
       "isRotate": true
     },
     {
       "src": "circuit/11.png",
-      "sockets": ["BCB", "BCB", "BBB", "BBB"],
+      "edges": ["BCB", "BCB", "BBB", "BBB"],
       "isRotate": true
     },
     {
       "src": "circuit/12.png",
-      "sockets": ["BBB", "BCB", "BBB", "BCB"],
+      "edges": ["BBB", "BCB", "BBB", "BCB"],
       "isRotate": true
     }]
 }

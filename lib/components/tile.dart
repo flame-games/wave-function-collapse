@@ -52,14 +52,27 @@ class Tile {
     }
   }
 
+  List<int> valid(String direction) {
+    switch (direction) {
+      case 'up':
+        return up;
+      case 'right':
+        return right;
+      case 'down':
+        return down;
+      case 'left':
+        return left;
+      default:
+        return [];
+    }
+  }
+
   Tile rotate(int num) {
     double rotation = num * (math.pi / 2);
-
-    // エッジを回転させる
+    // Rotating edges
     final newEdges = List<String>.generate(edges.length, (i) {
       return edges[(i - num + edges.length) % edges.length];
     });
-
     return Tile(
         SpriteComponent(
           sprite: img.sprite,

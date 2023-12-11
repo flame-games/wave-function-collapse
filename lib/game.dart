@@ -165,43 +165,19 @@ class MainGame extends FlameGame with KeyboardEvents {
           List<int> sockets = List.generate(tiles.length, (i) => i);
           // Look up
           if (j > 0) {
-            Cell up = grid[i + (j - 1) * DIM];
-            List<int> validSockets = [];
-            for (int socket in up.sockets) {
-              List<int> valid = tiles[socket].down;
-              validSockets.addAll(valid);
-            }
-            checkValid(sockets, validSockets);
+            cellCollapse(grid[i + (j - 1) * DIM], "down", sockets);
           }
           // Look right
           if (i < DIM - 1) {
-            Cell right = grid[i + 1 + j * DIM];
-            List<int> validSockets = [];
-            for (int socket in right.sockets) {
-              List<int> valid = tiles[socket].left;
-              validSockets.addAll(valid);
-            }
-            checkValid(sockets, validSockets);
+            cellCollapse(grid[i + 1 + j * DIM], "left", sockets);
           }
           // Look down
           if (j < DIM - 1) {
-            Cell down = grid[i + (j + 1) * DIM];
-            List<int> validSockets = [];
-            for (int socket in down.sockets) {
-              List<int> valid = tiles[socket].up;
-              validSockets.addAll(valid);
-            }
-            checkValid(sockets, validSockets);
+            cellCollapse(grid[i + (j + 1) * DIM], "up", sockets);
           }
           // Look left
           if (i > 0) {
-            Cell left = grid[i - 1 + j * DIM];
-            List<int> validSockets = [];
-            for (int socket in left.sockets) {
-              List<int> valid = tiles[socket].right;
-              validSockets.addAll(valid);
-            }
-            checkValid(sockets, validSockets);
+            cellCollapse(grid[i - 1 + j * DIM], "right", sockets);
           }
           nextGrid[index] = Cell.fromList(sockets);
         }
@@ -209,5 +185,19 @@ class MainGame extends FlameGame with KeyboardEvents {
     }
 
     grid = nextGrid.where((cell) => cell != null).cast<Cell>().toList();
+  }
+
+  void cellCollapse(Cell cell, String direction, sockets) {
+    List<int> validSockets = getValidSockets(cell, direction);
+    checkValid(sockets, validSockets);
+  }
+
+  List<int> getValidSockets(Cell cell, String direction) {
+    List<int> validSockets = [];
+    for (int socket in cell.sockets) {
+      List<int> valid = tiles[socket].valid(direction);
+      validSockets.addAll(valid);
+    }
+    return validSockets;
   }
 }

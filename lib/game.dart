@@ -25,12 +25,7 @@ class MainGame extends FlameGame with KeyboardEvents {
     super.onLoad();
 
     await initTiles();
-    initRotateTiles(tiles.length);
-    // Generating Adjacency Rules
-    for (var tile in tiles) {
-      tile.analyze(tiles);
-    }
-
+    generatingAdjacencyRules();
     startOver();
   }
 
@@ -40,6 +35,11 @@ class MainGame extends FlameGame with KeyboardEvents {
   }
 
   Future<void> initTiles() async {
+    await createTilesFromJson();
+    createRotateTiles(tiles.length);
+  }
+
+  Future<void> createTilesFromJson() async {
     var tileListData = await loadJsonData(jsonFileName);
     for (int i = 0; i < tileListData['tileList'].length; i++) {
       var tileData = tileListData['tileList'][i];
@@ -48,7 +48,13 @@ class MainGame extends FlameGame with KeyboardEvents {
     }
   }
 
-  void initRotateTiles(int tileLength) {
+  void generatingAdjacencyRules() {
+    for (var tile in tiles) {
+      tile.analyze(tiles);
+    }
+  }
+
+  void createRotateTiles(int tileLength) {
     for (int i = 0; i < tileLength; i++) {
       if (tiles[i].isRotate) {
         for (int j = 1; j < 4; j++) {
@@ -93,14 +99,26 @@ class MainGame extends FlameGame with KeyboardEvents {
 
     draw();
 
-    Random random = Random();
+    List<Cell> lowEntropyGrid = pickCellWithLeastEntropy();
+    if (lowEntropyGrid.isEmpty) {
+      return;
+    }
 
-    // Pick cell with least entropy
+    Cell cell = randomSelectionOfSockets(lowEntropyGrid);
+    if (cell.sockets.isEmpty) {
+      startOver();
+      return;
+    }
+
+    mainCollapseLoop();
+  }
+
+  List<Cell> pickCellWithLeastEntropy() {
     List<Cell> gridCopy = List<Cell>.from(grid);
     gridCopy = gridCopy.where((a) => !a.collapsed).toList();
 
     if (gridCopy.isEmpty) {
-      return;
+      return [];
     }
     gridCopy.sort((a, b) => a.sockets.length - b.sockets.length);
 
@@ -117,19 +135,25 @@ class MainGame extends FlameGame with KeyboardEvents {
       gridCopy.removeRange(stopIndex, gridCopy.length);
     }
 
-    // リストからランダムな要素を選択
-    Cell cell = gridCopy[random.nextInt(gridCopy.length)];
+    return gridCopy;
+  }
+
+  Cell randomSelectionOfSockets(List<Cell> gridTarget) {
+    Random random = Random();
+
+    Cell cell = gridTarget[random.nextInt(gridTarget.length)];
     cell.collapsed = true;
 
     if (cell.sockets.isEmpty) {
-      startOver(); // この関数は適切に定義する必要があります
-      return;
+      return cell;
     }
 
-    // オプションリストからランダムな要素を選択
     var pick = cell.sockets[random.nextInt(cell.sockets.length)];
     cell.sockets = [pick];
+    return cell;
+  }
 
+  void mainCollapseLoop() {
     List<Cell?> nextGrid = List.filled(DIM * DIM, null);
     for (int j = 0; j < DIM; j++) {
       for (int i = 0; i < DIM; i++) {

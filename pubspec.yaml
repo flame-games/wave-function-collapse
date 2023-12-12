@@ -22,4 +22,10 @@ flutter:
     - assets/images/
     - assets/images/circuit/
     - assets/images/tiles/
+    - assets/images/knots/
+    - assets/images/circles/
+    - assets/images/castle/
+    - assets/images/rooms/
+    - assets/images/floor_plan/
+    - assets/images/summer/
     - assets/data/

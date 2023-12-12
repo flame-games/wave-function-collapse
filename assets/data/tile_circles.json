@@ -1,0 +1,43 @@
+{
+  "tileList": [
+    {
+      "src": "circles/b.png",
+      "edges": ["AAA", "AAA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "circles/w.png",
+      "edges": ["BBB", "BBB", "BBB", "BBB"],
+      "isRotate": false
+    },
+    {
+      "src": "circles/b_half.png",
+      "edges": ["AAA", "BBB", "BBB", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "circles/b_i.png",
+      "edges": ["AAA", "BBB", "AAA", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "circles/b_quarter.png",
+      "edges": ["AAA", "AAA", "BBB", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "circles/w_half.png",
+      "edges": ["BBB", "AAA", "AAA", "AAA"],
+      "isRotate": true
+    },
+    {
+      "src": "circles/w_i.png",
+      "edges": ["BBB", "AAA", "BBB", "AAA"],
+      "isRotate": true
+    },
+    {
+      "src": "circles/w_quarter.png",
+      "edges": ["BBB", "BBB", "AAA", "AAA"],
+      "isRotate": true
+    }]
+}

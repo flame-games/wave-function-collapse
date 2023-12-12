@@ -1,0 +1,68 @@
+{
+  "tileList": [
+    {
+      "src": "circuit/component.png",
+      "edges": ["AAA", "AAA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "circuit/substrate.png",
+      "edges": ["BBB", "BBB", "BBB", "BBB"],
+      "isRotate": false
+    },
+    {
+      "src": "circuit/vias.png",
+      "edges": ["BCB", "BBB", "BBB", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/wire.png",
+      "edges": ["BBB", "BDB", "BBB", "BDB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/connection.png",
+      "edges": ["BCB", "BBA", "AAA", "ABB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/corner.png",
+      "edges": ["BBB", "BBB", "BBA", "ABB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/track.png",
+      "edges": ["BCB", "BBB", "BCB", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/bridge.png",
+      "edges": ["BCB", "BDB", "BCB", "BDB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/transition.png",
+      "edges": ["BDB", "BBB", "BCB", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/t.png",
+      "edges": ["BBB", "BCB", "BCB", "BCB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/dskew.png",
+      "edges": ["BCB", "BCB", "BCB", "BCB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/skew.png",
+      "edges": ["BCB", "BCB", "BBB", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "circuit/viad.png",
+      "edges": ["BBB", "BCB", "BBB", "BCB"],
+      "isRotate": true
+    }]
+}

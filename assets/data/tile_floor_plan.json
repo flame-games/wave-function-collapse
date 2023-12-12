@@ -1,0 +1,88 @@
+{
+  "tileList": [
+    {
+      "src": "floor_plan/empty.png",
+      "edges": ["AAA", "AAA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "floor_plan/floor.png",
+      "edges": ["BBB", "BBB", "BBB", "BBB"],
+      "isRotate": false
+    },
+    {
+      "src": "floor_plan/div.png",
+      "edges": ["BBB", "BCB", "BBB", "BCB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/divt.png",
+      "edges": ["BBB", "BCB", "BCB", "BCB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/divturn.png",
+      "edges": ["BCB", "BCB", "BBB", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/door.png",
+      "edges": ["BBB", "BCB", "BBB", "BCB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/glass.png",
+      "edges": ["BBB", "BCA", "AAA", "ACB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/halfglass.png",
+      "edges": ["BBB", "BCA", "AAA", "ACB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/in.png",
+      "edges": ["BBB", "BBB", "BCA", "ACB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/out.png",
+      "edges": ["ACB", "BCA", "AAA", "AAA"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/stairs.png",
+      "edges": ["BBB", "BCB", "BCB", "BCB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/table.png",
+      "edges": ["BBB", "BBB", "BBB", "BBB"],
+      "isRotate": false
+    },
+    {
+      "src": "floor_plan/vent.png",
+      "edges": ["BBB", "BBB", "BBB", "BBB"],
+      "isRotate": false
+    },
+    {
+      "src": "floor_plan/w.png",
+      "edges": ["BBB", "BCA", "AAA", "ACB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/wall.png",
+      "edges": ["BBB", "BCA", "AAA", "ACB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/walldiv.png",
+      "edges": ["BCB", "BCA", "AAA", "ACB"],
+      "isRotate": true
+    },
+    {
+      "src": "floor_plan/window.png",
+      "edges": ["BBB", "BCA", "AAA", "ACB"],
+      "isRotate": true
+    }]
+}

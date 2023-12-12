@@ -1,0 +1,184 @@
+{
+  "tileList": [
+    {
+      "src": "summer/grass.png",
+      "edges": ["AAA", "AAA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/road_0.png",
+      "edges": ["BBB", "BBA", "AAA", "ABB"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/road_1.png",
+      "edges": ["BBA", "AAA", "ABB", "BBB"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/road_2.png",
+      "edges": ["AAA", "ABB", "BBB", "BBA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/road_3.png",
+      "edges": ["ABB", "BBB", "BBA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/roadturn_0.png",
+      "edges": ["ABB", "BBA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/roadturn_1.png",
+      "edges": ["BBA", "AAA", "AAA", "ABB"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/roadturn_2.png",
+      "edges": ["AAA", "AAA", "ABB", "BBA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/roadturn_3.png",
+      "edges": ["AAA", "ABB", "BBA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliff_0.png",
+      "edges": ["AAA", "ACA", "AAA", "ACA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliff_1.png",
+      "edges": ["ACA", "AAA", "ACA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliff_2.png",
+      "edges": ["AAA", "ACA", "AAA", "ACA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliff_3.png",
+      "edges": ["ACA", "AAA", "ACA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliffcorner_0.png",
+      "edges": ["ACA", "ACA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliffcorner_1.png",
+      "edges": ["ACA", "AAA", "AAA", "ACA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliffcorner_2.png",
+      "edges": ["AAA", "AAA", "ACA", "ACA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliffcorner_3.png",
+      "edges": ["AAA", "ACA", "ACA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliffturn_0.png",
+      "edges": ["ACA", "ACA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliffturn_1.png",
+      "edges": ["ACA", "AAA", "AAA", "ACA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliffturn_2.png",
+      "edges": ["AAA", "AAA", "ACA", "ACA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/cliffturn_3.png",
+      "edges": ["AAA", "ACA", "ACA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/water_a_0.png",
+      "edges": ["DDD", "DDD", "DDD", "DDD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/water_b_0.png",
+      "edges": ["DDD", "DDD", "DDD", "DDD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/water_c_0.png",
+      "edges": ["DDD", "DDD", "DDD", "DDD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/watercorner_0.png",
+      "edges": ["ACD", "DCA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/watercorner_1.png",
+      "edges": ["DCA", "AAA", "AAA", "ACD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/watercorner_2.png",
+      "edges": ["AAA", "AAA", "ACD", "DCA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/watercorner_3.png",
+      "edges": ["AAA", "ACD", "DCA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/waterside_0.png",
+      "edges": ["DDD", "DCA", "AAA", "ACD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/waterside_1.png",
+      "edges": ["DCA", "AAA", "ACD", "DDD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/waterside_2.png",
+      "edges": ["AAA", "ACD", "DDD", "DCA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/waterside_3.png",
+      "edges": ["ACD", "DDD", "DCA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/waterturn_0.png",
+      "edges": ["DDD", "DDD", "DCA", "ACD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/waterturn_1.png",
+      "edges": ["DDD", "DCA", "ACD", "DDD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/waterturn_2.png",
+      "edges": ["DCA", "ACD", "DDD", "DDD"],
+      "isRotate": false
+    },
+    {
+      "src": "summer/waterturn_3.png",
+      "edges": ["ACD", "DDD", "DDD", "DCA"],
+      "isRotate": false
+    }
+  ]
+}

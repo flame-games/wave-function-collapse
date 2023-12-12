@@ -1,0 +1,48 @@
+{
+  "tileList": [
+    {
+      "src": "rooms/wall.png",
+      "edges": ["AAA", "AAA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "rooms/empty.png",
+      "edges": ["BBB", "BBB", "BBB", "BBB"],
+      "isRotate": false
+    },
+    {
+      "src": "rooms/bend.png",
+      "edges": ["BAA", "AAB", "BBB", "BBB"],
+      "isRotate": true
+    },
+    {
+      "src": "rooms/corner.png",
+      "edges": ["AAB", "BAA", "AAA", "AAA"],
+      "isRotate": true
+    },
+    {
+      "src": "rooms/corridor.png",
+      "edges": ["ABA", "AAA", "ABA", "AAA"],
+      "isRotate": true
+    },
+    {
+      "src": "rooms/door.png",
+      "edges": ["BBB", "BAA", "ABA", "AAB"],
+      "isRotate": true
+    },
+    {
+      "src": "rooms/side.png",
+      "edges": ["AAA", "AAB", "BBB", "BAA"],
+      "isRotate": true
+    },
+    {
+      "src": "rooms/t.png",
+      "edges": ["AAA", "ABA", "ABA", "ABA"],
+      "isRotate": true
+    },
+    {
+      "src": "rooms/turn.png",
+      "edges": ["ABA", "ABA", "AAA", "AAA"],
+      "isRotate": true
+    }]
+}

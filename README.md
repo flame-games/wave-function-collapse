@@ -1,16 +1,52 @@
-# wave_function_collapse
+# Sample of player character movement
 
-A new Flutter project.
+This sample demonstrates a simple [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse) tile model using [Flame](https://github.com/flame-engine), Flutter's frame game engine.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Usage
 
-A few resources to get you started if this is your first Flutter project:
+```
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Tilemap generation screenshot
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### castle
+
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/castle.png">
+
+### circles
+
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/circles.png">
+
+### circuit
+
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/circuit.png">
+
+### floor_plan
+
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/floor_plan.png">
+
+### knots
+
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/knots.png">
+
+### rooms
+
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/rooms.png">
+
+### summer
+
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/summer.png">
+
+## Author
+
+**Daisuke Takayama**
+
+-   [@webcyou](https://twitter.com/webcyou)
+-   [@panicdragon](https://twitter.com/panicdragon)
+-   <https://github.com/webcyou>
+-   <https://github.com/webcyou-org>
+-   <https://github.com/panicdragon>
+-   <https://www.webcyou.com/>
+

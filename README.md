@@ -13,31 +13,31 @@ flutter run
 
 ### castle
 
-<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/castle.png">
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/castle.png">
 
 ### circles
 
-<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/circles.png">
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/circles.png">
 
 ### circuit
 
-<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/circuit.png">
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/circuit.png">
 
 ### floor_plan
 
-<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/floor_plan.png">
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/floor_plan.png">
 
 ### knots
 
-<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/knots.png">
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/knots.png">
 
 ### rooms
 
-<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/rooms.png">
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/rooms.png">
 
 ### summer
 
-<img width="300" src="https://github.com/flame-games/wave-function-collapse/images/summer.png">
+<img width="300" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/summer.png">
 
 ## Author
 

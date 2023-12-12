@@ -6,8 +6,8 @@ import './components/tile.dart';
 import 'dart:math';
 import 'dart:convert';
 
-const int DIM = 20;
-const jsonFileName = "tile_summer.json";
+const int DIM = 15;
+const jsonFileName = "tile_simple.json";
 const int gameWidth = 600;
 const int gameHeight = 600;
 

@@ -2,6 +2,7 @@
 
 This sample demonstrates a simple [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse) tile model using [Flame](https://github.com/flame-engine), Flutter's frame game engine.
 
+<img width="500" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/simple.gif">
 
 ## Usage
 
@@ -10,6 +11,10 @@ flutter run
 ```
 
 ## Tilemap generation screenshot
+
+### simple
+
+<img width="500" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/simple.gif">
 
 ### castle
 

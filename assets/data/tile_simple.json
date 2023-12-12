@@ -1,0 +1,13 @@
+{
+  "tileList": [
+    {
+      "src": "simple/blank.png",
+      "edges": ["AAA", "AAA", "AAA", "AAA"],
+      "isRotate": false
+    },
+    {
+      "src": "simple/t.png",
+      "edges": ["AAA", "ABA", "ABA", "ABA"],
+      "isRotate": true
+    }]
+}

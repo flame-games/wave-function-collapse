@@ -20,6 +20,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/simple/
     - assets/images/circuit/
     - assets/images/tiles/
     - assets/images/knots/

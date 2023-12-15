@@ -1,5 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
+import 'package:flutter/material.dart';
 import './components/cell.dart';
 import './components/tile.dart';
 import './constants/defines.dart';
@@ -33,22 +34,6 @@ class MainGame extends FlameGame with KeyboardEvents {
     grid = List.generate(DIM * DIM, (index) => Cell.fromValue(tiles.length));
   }
 
-  void draw() {
-    final w = size.x / DIM;
-    final h = size.y / DIM;
-
-    for (int j = 0; j < DIM; j++) {
-      for (int i = 0; i < DIM; i++) {
-        Cell cell = grid[i + j * DIM];
-        if (cell.collapsed) {
-          int index = cell.sockets[0];
-          Tile tile = tiles[index];
-          add(tile.createSpriteComponent(Vector2(w, h), Vector2(i * w, j * h)));
-        }
-      }
-    }
-  }
-
   void generatingAdjacencyRules() {
     for (var tile in tiles) {
       tile.analyze(tiles);
@@ -68,7 +53,6 @@ class MainGame extends FlameGame with KeyboardEvents {
   @override
   void update(double dt) {
     super.update(dt);
-    draw();
     mainLoop();
   }
 
@@ -82,5 +66,34 @@ class MainGame extends FlameGame with KeyboardEvents {
       return;
     }
     grid = waveCollapse(grid, tiles);
+  }
+
+  @override
+  void render(Canvas canvas) {
+    final w = size.x / DIM;
+    final h = size.y / DIM;
+
+    for (int j = 0; j < DIM; j++) {
+      for (int i = 0; i < DIM; i++) {
+        Cell cell = grid[i + j * DIM];
+        if (cell.collapsed) {
+          int index = cell.sockets[0];
+          Tile tile = tiles[index];
+          tile.img.size = Vector2(w, h);
+          canvas.save();
+
+          double dx = i * w + w / 2;
+          double dy = j * h + h / 2;
+          canvas.translate(dx, dy);
+          canvas.rotate(tile.angle);
+          canvas.translate(-tile.img.size.x / 2, -tile.img.size.y / 2);
+          tile.img.render(canvas);
+          canvas.restore();
+        } else {
+          Rect rect = Rect.fromLTWH(i * w, j * h, w, h);
+          canvas.drawRect(rect, Paint()..color = Colors.white);
+        }
+      }
+    }
   }
 }

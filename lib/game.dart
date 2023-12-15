@@ -1,3 +1,4 @@
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,7 @@ import './constants/defines.dart';
 import './utility/utility.dart';
 import './core/wfc.dart';
 
-class MainGame extends FlameGame with KeyboardEvents {
+class MainGame extends FlameGame with KeyboardEvents, TapCallbacks {
   List<Cell> grid = [];
   List<Tile> tiles = [];
 
@@ -66,6 +67,11 @@ class MainGame extends FlameGame with KeyboardEvents {
       return;
     }
     grid = waveCollapse(grid, tiles);
+  }
+
+  @override
+  void onTapDown(tapDownEvent) {
+    initGrid();
   }
 
   @override

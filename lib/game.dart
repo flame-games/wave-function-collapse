@@ -33,15 +33,6 @@ class MainGame extends FlameGame with KeyboardEvents {
     grid = List.generate(DIM * DIM, (index) => Cell.fromValue(tiles.length));
   }
 
-  // void checkValid(List<int> arr, List<int> valid) {
-  //   for (int i = arr.length - 1; i >= 0; i--) {
-  //     int element = arr[i];
-  //     if (!valid.contains(element)) {
-  //       arr.removeAt(i);
-  //     }
-  //   }
-  // }
-
   void draw() {
     final w = size.x / DIM;
     final h = size.y / DIM;
@@ -90,95 +81,6 @@ class MainGame extends FlameGame with KeyboardEvents {
       initGrid();
       return;
     }
-    waveCollapse(grid, tiles);
+    grid = waveCollapse(grid, tiles);
   }
-
-  // List<Cell> pickCellWithLeastEntropy() {
-  //   List<Cell> gridCopy = List<Cell>.from(grid);
-  //   gridCopy = gridCopy.where((a) => !a.collapsed).toList();
-  //
-  //   if (gridCopy.isEmpty) {
-  //     return [];
-  //   }
-  //   gridCopy.sort((a, b) => a.sockets.length - b.sockets.length);
-  //
-  //   int len = gridCopy[0].sockets.length;
-  //   int stopIndex = 0;
-  //   for (int i = 1; i < gridCopy.length; i++) {
-  //     if (gridCopy[i].sockets.length > len) {
-  //       stopIndex = i;
-  //       break;
-  //     }
-  //   }
-  //
-  //   if (stopIndex > 0) {
-  //     gridCopy.removeRange(stopIndex, gridCopy.length);
-  //   }
-  //
-  //   return gridCopy;
-  // }
-
-  // bool randomSelectionOfSockets(List<Cell> gridTarget) {
-  //   Random random = Random();
-  //
-  //   Cell cell = gridTarget[random.nextInt(gridTarget.length)];
-  //   cell.collapsed = true;
-  //
-  //   if (cell.sockets.isEmpty) {
-  //     return false;
-  //   }
-  //
-  //   var pick = cell.sockets[random.nextInt(cell.sockets.length)];
-  //   cell.sockets = [pick];
-  //   return true;
-  // }
-
-//   void waveCollapse() {
-//     List<Cell?> nextGrid = List.filled(DIM * DIM, null);
-//
-//     for (int j = 0; j < DIM; j++) {
-//       for (int i = 0; i < DIM; i++) {
-//         int index = i + j * DIM;
-//
-//         if (grid[index].collapsed) {
-//           nextGrid[index] = grid[index];
-//         } else {
-//           List<int> sockets = List.generate(tiles.length, (i) => i);
-//           // Look up
-//           if (j > 0) {
-//             cellCollapse(grid[i + (j - 1) * DIM], "down", sockets);
-//           }
-//           // Look right
-//           if (i < DIM - 1) {
-//             cellCollapse(grid[i + 1 + j * DIM], "left", sockets);
-//           }
-//           // Look down
-//           if (j < DIM - 1) {
-//             cellCollapse(grid[i + (j + 1) * DIM], "up", sockets);
-//           }
-//           // Look left
-//           if (i > 0) {
-//             cellCollapse(grid[i - 1 + j * DIM], "right", sockets);
-//           }
-//           nextGrid[index] = Cell.fromList(sockets);
-//         }
-//       }
-//     }
-//
-//     grid = nextGrid.where((cell) => cell != null).cast<Cell>().toList();
-//   }
-//
-//   void cellCollapse(Cell cell, String direction, sockets) {
-//     List<int> validSockets = getValidSockets(cell, direction);
-//     checkValid(sockets, validSockets);
-//   }
-//
-//   List<int> getValidSockets(Cell cell, String direction) {
-//     List<int> validSockets = [];
-//     for (int socket in cell.sockets) {
-//       List<int> valid = tiles[socket].valid(direction);
-//       validSockets.addAll(valid);
-//     }
-//     return validSockets;
-//   }
 }

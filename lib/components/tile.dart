@@ -2,14 +2,7 @@ import 'dart:ui';
 import 'dart:math' as math;
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
-
-String reverseString(String s) {
-  return s.split('').reversed.join('');
-}
-
-bool compareEdge(String a, String b) {
-  return a == reverseString(b);
-}
+import '../utility/utility.dart';
 
 class Tile {
   double angle = 0.0;

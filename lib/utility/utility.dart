@@ -3,6 +3,14 @@ import 'dart:convert';
 import '../constants/defines.dart';
 import '../components/tile.dart';
 
+String reverseString(String s) {
+  return s.split('').reversed.join('');
+}
+
+bool compareEdge(String a, String b) {
+  return a == reverseString(b);
+}
+
 Future<dynamic> loadJsonData(String fileName) async {
   String jsonString = await rootBundle.loadString('assets/data/$fileName');
   return jsonDecode(jsonString);

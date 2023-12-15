@@ -43,7 +43,7 @@ bool randomSelectionOfSockets(List<Cell> gridTarget) {
   return true;
 }
 
-void waveCollapse(List<Cell> grid, List<Tile> tiles) {
+List<Cell> waveCollapse(List<Cell> grid, List<Tile> tiles) {
   List<Cell?> nextGrid = List.filled(DIM * DIM, null);
 
   for (int j = 0; j < DIM; j++) {
@@ -74,13 +74,12 @@ void waveCollapse(List<Cell> grid, List<Tile> tiles) {
       }
     }
   }
-  grid = nextGrid.where((cell) => cell != null).cast<Cell>().toList();
+  return nextGrid.where((cell) => cell != null).cast<Cell>().toList();
 }
 
 void checkValid(List<int> sockets, List<int> validSockets) {
   for (int i = sockets.length - 1; i >= 0; i--) {
-    int element = sockets[i];
-    if (!validSockets.contains(element)) {
+    if (!validSockets.contains(sockets[i])) {
       sockets.removeAt(i);
     }
   }

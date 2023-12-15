@@ -1,9 +1,8 @@
-import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
 
 import 'main_game_page.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const App());
 }

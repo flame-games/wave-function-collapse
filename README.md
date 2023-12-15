@@ -12,7 +12,6 @@ flutter run
 
 This is a simple implementation of the WaveFunctionCollapse tile model.
 
-Since SpriteComponent is added, performance is not good and modification is planned.
 
 ## Tilemap generation screenshot
 

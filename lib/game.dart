@@ -26,7 +26,7 @@ class MainGame extends FlameGame with KeyboardEvents {
 
     await initTiles();
     generatingAdjacencyRules();
-    startOver();
+    initGrid();
   }
 
   Future<dynamic> loadJsonData(String fileName) async {
@@ -73,11 +73,11 @@ class MainGame extends FlameGame with KeyboardEvents {
     }
   }
 
-  void startOver() {
+  void initGrid() {
     grid = List.generate(DIM * DIM, (index) => Cell.fromValue(tiles.length));
   }
 
-  Future<void> draw() async {
+  void draw() {
     final w = size.x / DIM;
     final h = size.y / DIM;
 
@@ -106,7 +106,7 @@ class MainGame extends FlameGame with KeyboardEvents {
       return;
     }
     if (!randomSelectionOfSockets(lowEntropyGrid)) {
-      startOver();
+      initGrid();
       return;
     }
     waveCollapse();

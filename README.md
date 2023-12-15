@@ -2,7 +2,7 @@
 
 This sample demonstrates a simple [WaveFunctionCollapse](https://github.com/mxgmn/WaveFunctionCollapse) tile model using [Flame](https://github.com/flame-engine), Flutter's frame game engine.
 
-<img width="500" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/simple.gif">
+<img width="700" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/simple.gif">
 
 ## Usage
 
@@ -12,12 +12,24 @@ flutter run
 
 This is a simple implementation of the WaveFunctionCollapse tile model.
 
+Tile data is specified in JSON.
+
+Specifies the tile data image path, the sockets that can be combined, and whether they need to be rotated.
+
+```
+{
+  "src": "castle/bridge.png",
+  "edges": ["ACA", "ABA", "ACA", "ABA"],
+  "isRotate": true
+}
+```
+
 
 ## Tilemap generation screenshot
 
 ### simple
 
-<img width="500" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/simple.gif">
+<img width="500" src="https://github.com/flame-games/wave-function-collapse/blob/main/images/simple.png">
 
 ### castle
 
